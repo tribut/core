@@ -1718,6 +1718,9 @@ class Util {
 	public function getPathWithMountPoint($id) {
 		list($storage, $internalPath) = \OC\Files\Cache\Cache::getById($id);
 		$mount = \OC\Files\Filesystem::getMountByStorageId($storage);
+		if (!is_array($mount) || empty($mount)) {
+			throw new \Exception('Could not get mount for storage ' . $storage);
+		}
 		$mountPoint = $mount[0]->getMountPoint();
 		$path = \OC\Files\Filesystem::normalizePath($mountPoint . '/' . $internalPath);
 
