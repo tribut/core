@@ -169,6 +169,7 @@ class ArrayParser {
 
 	/**
 	 * @param string $body
+	 * @throws SyntaxException
 	 * @return array
 	 */
 	function splitArray($body) {
